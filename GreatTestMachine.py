@@ -8,11 +8,10 @@ from time import time
 
 class camApp(App):   
     def build(self):
-        self.cam=Camera(index=0, resolution=(1,1))
+        self.cam=Camera(index=0, resolution=(320,200))
         bl=BoxLayout()
         btt=Button(text='1',on_press=self.g)
         self.lbl=Label(text='0')
-        bl.add_widget(self.cam)
         bl.add_widget(self.lbl)
         bl.add_widget(btt)
         return bl
@@ -28,7 +27,6 @@ class camApp(App):
                 b[i]=b[i+1]-b[i]
             b.pop(-1)
             s=str(max(b)-min(b))
-            print(s)
             self.lbl.text=s
             b=[]
             a=[]
