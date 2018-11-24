@@ -8,7 +8,7 @@ from time import time
 
 class camApp(App):   
     def build(self):
-        self.cam=Camera(index=0, resolution=(320,200))
+        self.cam=Camera(index=0, resolution=(-1,-1),play=False)
         bl=BoxLayout()
         btt=Button(text='1',on_press=self.g)
         self.lbl=Label(text='0')
@@ -17,6 +17,7 @@ class camApp(App):
         return bl
     
     def g(self,instance):
+        self.cam.play=True
         Clock.schedule_interval(self.f,0.1)
     
     def f(self,instance):
@@ -30,6 +31,7 @@ class camApp(App):
             self.lbl.text=s
             b=[]
             a=[]
+            self.cam.play=False
             return False
         frame=self.cam.texture
         a.append(frame)
